@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request
 # import tensorflow as tf
 # server tensorflow-cpu
+# https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7
 from tensorflow.keras.models import model_from_json
 import cv2
 # server opencv-python-headless
@@ -10,7 +11,7 @@ from flask_cors import CORS, cross_origin
 # builtin
 import json
 import urllib
-import pickle
+# import pickle
 
 # local
 from disease_map import disease_map
@@ -24,19 +25,19 @@ CORS(app, support_credentials=True)
 resnet_model = './models/ResNet50_Model.hdf5'
 resnet_json = './models/ResNet50.json'
 # tflite_dir = "./models/model.tflite"
-pickle_model_dir = "./models/pkl_format.pkl"
+# pickle_model_dir = "./models/pkl_format.pkl"
 
 
 # loading the model using pickle
-resnetmodel = pickle.load(open(pickle_model_dir, 'rb'))
+# resnetmodel = pickle.load(open(pickle_model_dir, 'rb'))
 
 # tflite
 # interpreter = tf.lite.Interpreter(model_path=tflite_dir)
 
 # resnet
-# with open(resnet_json, 'r') as resnetjson:
-#         resnetmodel = model_from_json(resnetjson.read())
-# resnetmodel.load_weights(resnet_model)
+with open(resnet_json, 'r') as resnetjson:
+        resnetmodel = model_from_json(resnetjson.read())
+resnetmodel.load_weights(resnet_model)
 
 IMAGE_SIZE = 224
 
