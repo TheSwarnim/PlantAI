@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605071597352",
+    "project_id": "btpsem6",
+    "storage_bucket": "btpsem6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605071597352:android:4bf356ad90684183aefa1d",
+        "android_client_info": {
+          "package_name": "com.example.btp_sem6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605071597352-huva5l39dk9e501ld5askkcpvoc4ccoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr2YtfzwfOi23URSqq4YH5Kaja6CrANiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605071597352-huva5l39dk9e501ld5askkcpvoc4ccoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -44,7 +44,7 @@ IMAGE_SIZE = 224
 def resize_image(image, image_size):
     return cv2.resize(image.copy(), image_size, interpolation=cv2.INTER_AREA)
 
-@app.route('/predict',methods=["POST"])
+@app.route('/predict', methods=["POST"])
 @cross_origin()
 def predict():
     # print(request.json)
