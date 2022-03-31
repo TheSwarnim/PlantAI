@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PlantAI</string>
+    <string name="upload_pic">Upload Pic</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="result">Result</string>
+    <string name="disease_name">Disease Name :</string>
+    <string name="score">Score :</string>
+    <string name="search_disease_on_google">Search Disease On Google</string>
+</resources>

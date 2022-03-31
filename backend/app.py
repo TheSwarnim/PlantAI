@@ -1,16 +1,26 @@
 import numpy as np
 from flask import Flask, request
+# import tensorflow as tf
+# server tensorflow-cpu
+# https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7
 from tensorflow.keras.models import model_from_json
-import json
 import cv2
+# server opencv-python-headless
 from flask_cors import CORS, cross_origin
+
+# builtin
+import json
 import urllib
+# import pickle
+
+# local
 from disease_map import disease_map
-import tensorflow as tf
 
 app = Flask(__name__)
 
 CORS(app, support_credentials=True)
+
+# data link : https://www.kaggle.com/vipoooool/new-plant-diseases-dataset
 
 resnet_model = './models/ResNet50_Model.hdf5'
 resnet_json = './models/ResNet50.json'
@@ -34,7 +44,7 @@ IMAGE_SIZE = 224
 def resize_image(image, image_size):
     return cv2.resize(image.copy(), image_size, interpolation=cv2.INTER_AREA)
 
-@app.route('/predict',methods=["POST"])
+@app.route('/predict', methods=["POST"])
 @cross_origin()
 def predict():
     # print(request.json)
