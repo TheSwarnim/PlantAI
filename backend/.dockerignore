@@ -1,0 +1,5 @@
+models/model.tflite
+models/pkl_format.pkl
+methodology/
+image/
+notebooks/
