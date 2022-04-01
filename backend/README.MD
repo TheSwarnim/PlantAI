@@ -8,9 +8,9 @@
 
 ### Or use these commands:
 #### download pip package gdown
-`
+```
 pip install gdown
-`
+```
 #### after the package downloaded go to models directory and run command
 ```
 gdown https://drive.google.com/u/0/uc?id=1--H9BKESftxQSN3bqwcj1vMyOuFU9HNi&export=download
