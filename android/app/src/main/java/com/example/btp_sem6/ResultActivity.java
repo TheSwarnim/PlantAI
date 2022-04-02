@@ -119,7 +119,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void predict(String firebaseImgUri){
-        String Url = "http://65.2.128.63/predict";
+        String Url = "http://ec2-13-233-125-177.ap-south-1.compute.amazonaws.com/predict";
         System.out.println(firebaseImgUri);
         post(Url, new Callback() {
             @Override
