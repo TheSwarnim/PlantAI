@@ -95,6 +95,7 @@ public class ResultActivity extends AppCompatActivity {
     private void uploadPic(Uri imageUri) {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image");
+        pd.setCanceledOnTouchOutside(false);
         pd.show();
         final String randomKey = UUID.randomUUID().toString();
 
@@ -105,12 +106,11 @@ public class ResultActivity extends AppCompatActivity {
             if (!task.isSuccessful()) {
                 throw Objects.requireNonNull(task.getException());
             }
-
             return ref.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 firebaseImgUri = Objects.requireNonNull(task.getResult()).toString();
-                predict(firebaseImgUri);
+                predict();
             } else {
                 Toast.makeText(ResultActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -118,20 +118,27 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    private void predict(String firebaseImgUri){
+    private void predict(){
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Fetching Values");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
         String Url = "http://ec2-13-233-125-177.ap-south-1.compute.amazonaws.com/predict";
-        System.out.println(firebaseImgUri);
         post(Url, new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Toast.makeText(ResultActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                runOnUiThread(() -> {
+                    System.out.println(e.getMessage());
+                    Toast.makeText(ResultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
+                });
+
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String str = Objects.requireNonNull(response.body()).string();
                 final String substring = str.substring(str.indexOf("{"), str.lastIndexOf("}") + 1);
-                System.out.println(substring);
                 try {
                     JSONObject jsonObject = new JSONObject(substring);
                     words = jsonObject.getString("disease").trim();
@@ -140,8 +147,10 @@ public class ResultActivity extends AppCompatActivity {
                         disease.setText(words);
                         score.setText(sc);
                     });
+                    pd.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    pd.dismiss();
                 }
 
             }
