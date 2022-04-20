@@ -6,4 +6,6 @@
     <string name="disease_name">Disease Name :</string>
     <string name="score">Score :</string>
     <string name="search_disease_on_google">Search Disease On Google</string>
+    <string name="test">test</string>
+    <string name="take_another_photo">Take Another Photo</string>
 </resources>

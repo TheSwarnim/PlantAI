@@ -6,8 +6,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +38,9 @@ public class ResultActivity extends AppCompatActivity {
 
     StorageReference storageReference;
     private String firebaseImgUri;
-    ImageView imageView;
-    TextView disease, score;
-    Button googleSearch;
+    ImageView imageView, back;
+    TextView disease;
+    LinearLayout googleSearch, redo;
     String words;
 
     @Override
@@ -55,6 +56,9 @@ public class ResultActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter query to search", Toast.LENGTH_SHORT).show();
             }
         });
+
+        redo.setOnClickListener(v -> finish());
+        back.setOnClickListener(v -> finish());
     }
 
     private void searchNet(String words) {
@@ -87,8 +91,8 @@ public class ResultActivity extends AppCompatActivity {
         imageView.setImageURI(myUri);
 
         disease = findViewById(R.id.disease_name);
-        score = findViewById(R.id.score);
-
+        redo = findViewById(R.id.redo);
+        back = findViewById(R.id.back);
         googleSearch = findViewById(R.id.search_button);
     }
 
@@ -142,10 +146,11 @@ public class ResultActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(substring);
                     words = jsonObject.getString("disease").trim();
-                    String sc = jsonObject.getString("confidence").trim();
                     runOnUiThread(() -> {
                         disease.setText(words);
-                        score.setText(sc);
+                        if(words.contains("healthy")){
+                            googleSearch.setVisibility(View.GONE);
+                        }
                     });
                     pd.dismiss();
                 } catch (JSONException e) {
@@ -157,7 +162,7 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    Call post(String url, Callback callback) {
+    void post(String url, Callback callback) {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, "{\r\n    \"img\": \"" + firebaseImgUri +"\"\r\n}");
@@ -168,6 +173,5 @@ public class ResultActivity extends AppCompatActivity {
                 .build();
         Call call = client.newCall(request);
         call.enqueue(callback);
-        return call;
     }
 }
