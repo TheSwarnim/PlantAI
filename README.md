@@ -28,7 +28,7 @@ Also there is no user friendly android application available which can be used b
 ## ML Model Architecture we used
 ![ml model architecture](https://user-images.githubusercontent.com/54211377/164741277-11dae845-e546-4ec6-97b1-869f97c6b5e4.png)
 
-## Our Application Architect
+## Our Application Architecture
 ![Plant Disease Classification](https://user-images.githubusercontent.com/54211377/164741412-9f77c9fd-2395-4cfa-b24a-6f0e43a02de4.png)
 
 ## References we go through
