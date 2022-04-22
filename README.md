@@ -1,4 +1,4 @@
-"# PlantAI" 
+# PlantAI
 Helping Farmers with Technology
 
 ## Our Goal
@@ -30,9 +30,8 @@ Also there is no user friendly android application available which can be used b
 
 ## Our Application Architect
 ![Plant Disease Classification](https://user-images.githubusercontent.com/54211377/164741412-9f77c9fd-2395-4cfa-b24a-6f0e43a02de4.png)
-ure
 
-## References we go though
+## References we go through
 [1] J. Sun, Y. Yang, X. He, and X. Wu, "Northern Maize Leaf Blight Detection Under Complex Field Environment Based on Deep Learning," in IEEE Access, vol. 8, pp. 33679-33688, 2020, doi: 10.1109/ACCESS.2020.2973658.
 https://ieeexplore.ieee.org/document/8998195
 
