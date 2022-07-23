@@ -1,6 +1,8 @@
 # PlantAI
 Helping Farmers with Technology
 
+Colab link: https://colab.research.google.com/drive/14jvc1IoeEbewUXEJ2eZrln6oCJoI3q36
+
 ## Our Goal
 Farming is one of the most important industries that is needed for the survival of mankind. Farming provides us with food and much more. But in today’s tech era, farmers are far away from using technology for the industry. This is keeping them from achieving great potential in the industry. 
 
